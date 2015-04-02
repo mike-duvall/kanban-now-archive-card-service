@@ -4,7 +4,7 @@ MAINTAINER Mike DuVall <mike.a.duvall@gmail.com>
 
 RUN mkdir /app
 ADD build/libs/gs-spring-boot-0.1.0.jar /app/
-#EXPOSE 8080
+EXPOSE 8080
 
 RUN apt-get update &&  apt-get install -y software-properties-common
 RUN add-apt-repository ppa:webupd8team/java
