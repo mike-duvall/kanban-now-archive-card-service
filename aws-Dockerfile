@@ -1,9 +1,8 @@
 # This is a comment
-FROM mikeduvall/java8
+FROM mikeduvall/archive_card_service
 MAINTAINER Mike DuVall <mike.a.duvall@gmail.com>
 
 EXPOSE 8080
-
 
 WORKDIR /app
 
