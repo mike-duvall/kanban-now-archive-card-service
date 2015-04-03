@@ -1,10 +1,6 @@
 # This is a comment
-FROM mikeduvall/archive_card_service
+FROM mikeduvall/archive-card-service
 MAINTAINER Mike DuVall <mike.a.duvall@gmail.com>
 
 EXPOSE 8080
 
-WORKDIR /app
-
-# Define default command.
-CMD ["java",  "-jar",  "gs-spring-boot-0.1.0.jar"]
