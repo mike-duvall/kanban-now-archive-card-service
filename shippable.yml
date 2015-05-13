@@ -6,5 +6,11 @@ jdk:
 
 script:
    - ./gradlew clean build
+   - zip -j ted.zip ./docker/aws/Dockerfile ./docker/aws/Dockerrun.aws.json ./build/libs/gs-spring-boot-0.1.0.jar
 
-archive: true
+#archive: true
+
+before_install:
+  - SUDO=$(which sudo) && $SUDO pip install awscli
+
+
