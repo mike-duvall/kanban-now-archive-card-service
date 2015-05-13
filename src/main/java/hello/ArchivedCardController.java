@@ -8,7 +8,6 @@ import java.util.List;
 
 @RestController
 public class ArchivedCardController {
-    xxx
     @RequestMapping("/archivedCards")
     public List<ArchivedCard> archivedCard() {
         List<ArchivedCard> archivedCardList = new ArrayList<ArchivedCard>();

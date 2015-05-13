@@ -13,4 +13,13 @@ script:
 before_install:
   - SUDO=$(which sudo) && $SUDO pip install awscli
 
+env:
+- secure: oT1BS+FOlNcM+cK+E6fRs3pqJKf+L0PPTHfQJOeDvtGJtjZw6SSH6Pajvq8Jr1n/HX6K0ZJvAcMf3Ui/CcU7RVXu/f2zshh3U0PRqLe5wy/9xShfzGOrHMyp4sjbt8C1OvwjnkF3qYTv36VItd3+dzspcRCIZtnx6nxIqcRhLTYkhTAVtu+NHWfGV4uPRkSVzGCUJadmT/osflh4e47VTCzwfpl/1YbiPKYSMjKq2+OxAjyuIuh4iBkFLq4I22FMMMln8epCWyXVKsczLzKof+295pPFRiy9uNw2ErRUHvrfaCwcMGxQUSn0diQDpiQxywc6dQeGUF+pYIIhLouQ/g==
 
+
+notifications:
+     email:
+         recipients:
+             - $NOTIFICATION_EMAIL_ADDRESS
+         on_success: always
+         on_failure: always
