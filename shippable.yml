@@ -7,4 +7,4 @@ jdk:
 script:
    - ./gradlew clean build
 
- 
+archive: true
