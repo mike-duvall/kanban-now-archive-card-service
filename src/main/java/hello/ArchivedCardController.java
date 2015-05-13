@@ -9,7 +9,7 @@ import java.util.List;
 @RestController
 public class ArchivedCardController {
     
-    @RequestMapping("/archivedCard")
+    @RequestMapping("/archivedCards")
     public List<ArchivedCard> archivedCard() {
         List<ArchivedCard> archivedCardList = new ArrayList<ArchivedCard>();
         ArchivedCard card1 = new ArchivedCard();

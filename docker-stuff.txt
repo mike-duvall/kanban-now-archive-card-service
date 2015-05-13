@@ -1,0 +1,1 @@
+docker run -it -v ~/workspace/kanban-now-archive-card-service:/app/kanban-now-archive-card-service -p 8090:8080 -p 5050:5050 mikeduvall/service-base bash
