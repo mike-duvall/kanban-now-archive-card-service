@@ -1,1 +1,6 @@
 zip -j ted.zip ./docker/aws/Dockerfile ./docker/aws/Dockerrun.aws.json ./build/libs/gs-spring-boot-0.1.0.jar
+
+
+aws s3 cp ted6.zip s3://mike-duvall-test2
+aws elasticbeanstalk create-application-version --application-name archive-card-service-5 --version-label v6  --source-bundle S3Bucket="mike-duvall-test2",S3Key="ted6.zip"
+aws elasticbeanstalk update-environment --environment-name archiveCardService5-env --version-label v6
