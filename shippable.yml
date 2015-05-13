@@ -14,7 +14,7 @@ before_install:
    - SUDO=$(which sudo) && $SUDO pip install awscli
 
 env:
-   - secure: oT1BS+FOlNcM+cK+E6fRs3pqJKf+L0PPTHfQJOeDvtGJtjZw6SSH6Pajvq8Jr1n/HX6K0ZJvAcMf3Ui/CcU7RVXu/f2zshh3U0PRqLe5wy/9xShfzGOrHMyp4sjbt8C1OvwjnkF3qYTv36VItd3+dzspcRCIZtnx6nxIqcRhLTYkhTAVtu+NHWfGV4uPRkSVzGCUJadmT/osflh4e47VTCzwfpl/1YbiPKYSMjKq2+OxAjyuIuh4iBkFLq4I22FMMMln8epCWyXVKsczLzKof+295pPFRiy9uNw2ErRUHvrfaCwcMGxQUSn0diQDpiQxywc6dQeGUF+pYIIhLouQ/g==
+   - secure: p6gCsmUi/bhvyyF3Bg4yV8dnKjY9UTElPz5NGOTf/l33Vum7RmIvVXtS+zNdyftbua5Pbchbj5bhKIKlNfKQpOl0N2bgztKWkHJDuQBVNd+xjofsdf+UNDZ6F65F710zVEJNfQA1JQ2TC37bes9VO/3hUwvn2V40vV+bJkM8Agt98Ikcrp1tjOO4d8Rpo+SFMGhAcV+3O+YC9D1QsQYs3n1IiUOHpvNyUCertPac+Q0JN/j6+wWiCngzPPGKS+BsQKnIpwej3SsTt339l1adm7KpKGtkMnnv+UF38rKlYTsAsRx/zMDrBquP3IVhouzTNGFoUKz0OPokBEyCjuzhYw==
 
 
 services:
@@ -22,4 +22,4 @@ services:
 
 notifications:
    email:
-      - dummymike@gmail.com
+      - $EMAIL_ADDRESS
