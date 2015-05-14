@@ -11,10 +11,15 @@ before_install:
 
 before_script:
   - mkdir -p ~/.aws
-#  - echo "aws_access_key_id = $AWSAccessKeyId" >> ~/.aws/config
-#  - echo "aws_secret_access_key = $aws_secret_access_key" >> ~/.aws/config
-  - echo "aws_access_key_id = $AWSAccessKeyId" >> /home/shippable/.aws/config
-  - echo "aws_secret_access_key = $aws_secret_access_key" >> /home/shippable/.aws/config
+  - echo "[default]" >> ~/.aws/config
+  - echo "aws_access_key_id = $AWSAccessKeyId" >> ~/.aws/config
+  - echo "aws_secret_access_key = $aws_secret_access_key" >> ~/.aws/config
+#  - echo "aws_access_key_id = $AWSAccessKeyId" >> /home/shippable/.aws/config
+#  - echo "aws_secret_access_key = $aws_secret_access_key" >> /home/shippable/.aws/config
+
+  - echo "[default]" >> ~/.aws/credentials
+  - echo "aws_access_key_id = $AWSAccessKeyId" >> ~/.aws/credentials
+  - echo "aws_secret_access_key = $aws_secret_access_key" >> ~/.aws/credentials
 
 
 
@@ -23,6 +28,7 @@ script:
 #   - echo AWSAccessKeyId=$AWSAccessKeyId
 #   - echo aws_secret_access_key=$aws_secret_access_key
    - cat /home/shippable/.aws/config
+   - cat /home/shippable/.aws/credentials
    - ./gradlew clean build
    - zip -j ted.zip ./docker/aws/Dockerfile ./docker/aws/Dockerrun.aws.json ./build/libs/gs-spring-boot-0.1.0.jar
    - aws s3 cp ted.zip s3://mike-duvall-test2
