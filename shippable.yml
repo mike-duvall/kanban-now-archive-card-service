@@ -9,6 +9,12 @@ before_install:
    - SUDO=$(which sudo) && $SUDO pip install awscli
 
 
+before_script:
+  - mkdir -p ~/.aws
+  - echo "aws_access_key_id = $AWSAccessKeyId" >> ~/.aws/config
+  - echo "aws_secret_access_key = $aws_secret_access_key" >> ~/.aws/config
+
+
 script:
 #   - echo AWSAccessKeyId=$AWSAccessKeyId
 #   - echo aws_secret_access_key=$aws_secret_access_key
