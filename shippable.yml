@@ -5,6 +5,8 @@ jdk:
 
 
 script:
+   - echo AWSAccessKeyId=$AWSAccessKeyId
+   - echo aws_secret_access_key=$aws_secret_access_key
    - ./gradlew clean build
    - zip -j ted.zip ./docker/aws/Dockerfile ./docker/aws/Dockerrun.aws.json ./build/libs/gs-spring-boot-0.1.0.jar
 
@@ -13,6 +15,12 @@ script:
 before_install:
    - SUDO=$(which sudo) && $SUDO pip install awscli
 
+
+
+env:
+  global:
+    - AWSAccessKeyId=AKIAJVUKFBKPEST5W7RQ
+    - secure: ByRqJqGajjjKT/9klytLwUeoc7jHLOwN9VOM6ZPUU15riP/aWJ4oZHdeTnrLgnek8uFQquDhrsscqAbGlET9P1nVRSEKSA+Gfp03PRa7h1PrtLRrG1JD1r4p6q/IHvWpvp2k1BqtvFVAFCkrJXOHfLBOsw9KC7ogHABcQ4CJCJMR0dLLss8VBCcGjJyMKk2yfYDGuYuq6ZTzKArLoxHvMJIOE7Ur5hr660/3Lpo0oBmXxjJzTjVaBvObjRBcK06pJ0f9t5j9lmmV957tA73PfR2q8KEU6wmPoBcgFJ+Bin+kcu/BV0gJM7JQm4nNu0RBhxnjKtEljze4Yi7neFECxQ==
 
 
 
