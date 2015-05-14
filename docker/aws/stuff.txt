@@ -8,3 +8,8 @@ aws elasticbeanstalk update-environment --environment-name archiveCardService5-e
 
 aws elasticbeanstalk create-application-version --region us-east-1 --application-name archive-card-service-5 --version-label v7  --source-bundle S3Bucket="mike-duvall-test2",S3Key="ted.zip"
 aws elasticbeanstalk update-environment --environment-name archiveCardService5-env --version-label v7
+
+
+aws elasticbeanstalk update-environment --region us-east-1 --environment-name archiveCardService5-env --version-label v-5554c2dad81dea0d0039d029
+
+aws elasticbeanstalk describe-environments --region us-east-1 --environment-name archiveCardService5-env
