@@ -24,6 +24,7 @@ script:
    - ./gradlew clean build
    - zip -j ted.zip ./docker/aws/Dockerfile ./docker/aws/Dockerrun.aws.json ./build/libs/gs-spring-boot-0.1.0.jar
    - aws s3 cp ted.zip s3://mike-duvall-test2
+   - aws elasticbeanstalk create-application-version --region us-east-1 --application-name archive-card-service-5 --version-label v-$SHIPPABLE_BUILD_ID  --source-bundle S3Bucket="mike-duvall-test2",S3Key="ted.zip"
 
 #archive: true
 
