@@ -4,37 +4,27 @@ jdk:
    - oraclejdk8
 
 
+env:
+  global:
+    - secure: qrPC6+pPs8ScJj3m9HPyzOE1kt8kyxP0HBy68JMmtIYR2wTDjdCWVcQVdjBtbyXBzOYKOSY0QWHKQT+mLBaBHvy4W+4WIznRdeTTrZXcZzQqEk8JuAznw5yrXJ9qjbuXqC81RwTaXu3xsNwIdPkoby2trab7b32AARSGxP0sdCyNLiDSIbOWDwziWD/eFudnaQlYBNGNg/L/30Kn0Fc2rF6GaGMuyCSgP9tPCmWEIe52Ilr2SDI0TjIBqXHBum6aCIoN6QzPAyPDq8nAAgPcxJwZyAsVHAIpr93lp42rqWkD96YVA9vmxuyo4+w2t5HAE/5avv3mFP27NqQAGvYicQ==
+
 
 before_install:
-   - SUDO=$(which sudo) && $SUDO pip install awscli
+  - wget -q -O /tmp/cf-cli.deb https://cli.run.pivotal.io/stable?release=debian64 && sudo dpkg -i /tmp/cf-cli.deb
 
-
-before_script:
-  - mkdir -p ~/.aws
-  - echo "[default]" >> ~/.aws/config
-  - echo "aws_access_key_id = $AWSAccessKeyId" >> ~/.aws/config
-  - echo "aws_secret_access_key = $aws_secret_access_key" >> ~/.aws/config
-  - cat /home/shippable/.aws/config
 
 script:
-#   - echo AWSAccessKeyId=$AWSAccessKeyId
-#   - echo aws_secret_access_key=$aws_secret_access_key
-
-
    - ./gradlew clean build
-   - zip -j ted.zip ./docker/aws/Dockerfile ./docker/aws/Dockerrun.aws.json ./build/libs/gs-spring-boot-0.1.0.jar
-   - aws s3 cp ted.zip s3://mike-duvall-test2
-   - aws elasticbeanstalk create-application-version --region us-east-1 --application-name archive-card-service-5 --version-label v-$SHIPPABLE_BUILD_ID  --source-bundle S3Bucket="mike-duvall-test2",S3Key="ted.zip"
-   - aws elasticbeanstalk update-environment --region us-east-1 --environment-name archiveCardService5-env --version-label v-$SHIPPABLE_BUILD_ID
 
 #archive: true
 
 
-env:
-  global:
-    - AWSAccessKeyId=AKIAJVUKFBKPEST5W7RQ
-    - secure: ByRqJqGajjjKT/9klytLwUeoc7jHLOwN9VOM6ZPUU15riP/aWJ4oZHdeTnrLgnek8uFQquDhrsscqAbGlET9P1nVRSEKSA+Gfp03PRa7h1PrtLRrG1JD1r4p6q/IHvWpvp2k1BqtvFVAFCkrJXOHfLBOsw9KC7ogHABcQ4CJCJMR0dLLss8VBCcGjJyMKk2yfYDGuYuq6ZTzKArLoxHvMJIOE7Ur5hr660/3Lpo0oBmXxjJzTjVaBvObjRBcK06pJ0f9t5j9lmmV957tA73PfR2q8KEU6wmPoBcgFJ+Bin+kcu/BV0gJM7JQm4nNu0RBhxnjKtEljze4Yi7neFECxQ==
 
+after_success:
+  - cf api https://api.run.pivotal.io
+  - cf auth "$CF_USER" "$CF_PASS"
+  - cf target -o "$CF_ORG" -s "$CF_SPACE"
+  - cf push archive-card-service -p target/gofurl.jar
 
 
 #notifications:
