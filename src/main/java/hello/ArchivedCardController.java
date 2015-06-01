@@ -14,12 +14,12 @@ public class ArchivedCardController {
         List<ArchivedCard> archivedCardList = new ArrayList<ArchivedCard>();
         ArchivedCard card1 = new ArchivedCard();
         card1.setText("Take Claritin");
-        card1.setDate("5/31/2015");
+        card1.setDate("6/1/2015");
         archivedCardList.add(card1);
 
         ArchivedCard card2 = new ArchivedCard();
         card2.setText("Save the whales");
-        card2.setDate("5/31/2015");
+        card2.setDate("6/1/2015");
         archivedCardList.add(card2);
 
         return archivedCardList;
