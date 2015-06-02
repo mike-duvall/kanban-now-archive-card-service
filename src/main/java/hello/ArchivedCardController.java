@@ -5,10 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @RestController
 public class ArchivedCardController {
@@ -35,7 +32,9 @@ public class ArchivedCardController {
 
     public String getTodayDateAsString() {
         DateFormat df = new SimpleDateFormat("M/d/yyyy");
-        Date today = Calendar.getInstance().getTime();
+        TimeZone centralTime = TimeZone.getTimeZone("US/Central");
+        Calendar calendar = new GregorianCalendar(centralTime);
+        Date today = calendar.getTime();
         return df.format(today);
     }
 }
