@@ -41,7 +41,7 @@ public class ArchivedCardController {
 //        return df.format(today);
         DateTimeZone chicagoTimeZone = DateTimeZone.forID( "America/Chicago" );
         LocalDate localDate = new LocalDate(chicagoTimeZone);
-        String dateAsString = localDate.toString();
+        String dateAsString = localDate.toString("M/d/yyy");
         return dateAsString;
     }
 
