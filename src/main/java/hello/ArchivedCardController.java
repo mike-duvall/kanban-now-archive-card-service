@@ -1,5 +1,8 @@
 package hello;
 
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.LocalDate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,10 +34,17 @@ public class ArchivedCardController {
     }
 
     public String getTodayDateAsString() {
-        DateFormat df = new SimpleDateFormat("M/d/yyyy");
-        TimeZone centralTime = TimeZone.getTimeZone("US/Central");
-        Calendar calendar = new GregorianCalendar(centralTime);
-        Date today = calendar.getTime();
-        return df.format(today);
+//        DateFormat df = new SimpleDateFormat("M/d/yyyy");
+//        TimeZone centralTime = TimeZone.getTimeZone("US/Central");
+//        Calendar calendar = new GregorianCalendar(centralTime);
+//        Date today = calendar.getTime();
+//        return df.format(today);
+        DateTimeZone chicagoTimeZone = DateTimeZone.forID( "America/Chicago" );
+        LocalDate localDate = new LocalDate(chicagoTimeZone);
+        String dateAsString = localDate.toString();
+        return dateAsString;
     }
+
+
+
 }
