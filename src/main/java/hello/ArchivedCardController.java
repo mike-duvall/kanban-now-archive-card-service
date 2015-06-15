@@ -21,12 +21,12 @@ public class ArchivedCardController {
 
         String todayDateAsString = getTodayDateAsString();
 
-        card1.setText("Take Claritinxx");
+        card1.setText("Take Claritin-222");
         card1.setDate(todayDateAsString);
         archivedCardList.add(card1);
 
         ArchivedCard card2 = new ArchivedCard();
-        card2.setText("Save the whalesyy");
+        card2.setText("Save the whales-333");
         card2.setDate(todayDateAsString);
         archivedCardList.add(card2);
 
